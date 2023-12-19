@@ -11,8 +11,9 @@ jobs:
     runs-on: windows-latest
     steps:
 
-    - uses: actions/checkout@v3
-    
+    - name: Checkout
+      uses: actions/checkout@v3
+
     - name: Setup Intel MPI
       id:   setup1
       uses: ./
@@ -24,16 +25,14 @@ jobs:
       uses: ./
       with:
         mpi: microsoft
-        
 
     - run: test ${{ steps.setup1.outputs.mpi }} == intelmpi
     - run: test ${{ steps.setup2.outputs.mpi }} == msmpi
+        
+
     - run: mpicc Huita.cpp -o helloworld
     - run: mpiexec -n 10 ./helloworld
         
-    - uses: actions/checkout@v3
-    - name: setup mpi
-      run: mpicc MPI.cpp
     - name: make build
       run: make build
     - name: run build
