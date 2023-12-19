@@ -15,12 +15,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Setup Intel MPI
-      id:   setup1
-      uses: ./
-      with:
-        mpi: intel
-
     - name: Setup Microsoft MPI
       id:   setup2
       uses: ./
