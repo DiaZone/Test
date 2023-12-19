@@ -13,6 +13,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: setup mpi
+      run: sudo apt-get install libcr-dev mpich2 mpich2-doc
     - name: make build
       run: make build
     - name: run build
