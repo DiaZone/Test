@@ -2,8 +2,6 @@
 #include <cmath>
 #include <mpi.h>
 
-using namespace std;
-
 //Промежуток поиска и точность
 int A = -200;
 int B = 200;
@@ -29,7 +27,7 @@ int main(int argc, char* argv[]) {
   double myStart = A + myRank * step; //Начало интервала поиска для процесса
   double myEnd = myStart + step; //Конец интервала поиска для процесса
 
-  //cout << myStart << " " << myEnd << endl;
+  //std::cout << myStart << " " << myEnd << std::endl;
 
   double min_fx = abs(equation(myStart)); //Минимальное значение функции
 
@@ -41,16 +39,16 @@ int main(int argc, char* argv[]) {
 
     //Получаем значение функции по модулю
     double mod_fx = abs(equation(x));
-    //cout << mod_fx << endl;
+    //std::cout << mod_fx << std::endl;
 
     //Если значение меньше предыдущего
     if(mod_fx <= epsilon && mod_fx <= min_fx){
 
       root = x; //Запоминаем новое значение
-      //cout << root << endl;
+      //std::cout << root << std::endl;
 
       min_fx = mod_fx;//Запоминаем новое значение функции
-      //cout << min_fx << endl;
+      //std::cout << min_fx << std::endl;
       
     }
     x += epsilon;//Прибавляем шаг
@@ -68,7 +66,7 @@ int main(int argc, char* argv[]) {
 
       //Фильтруем неправильные решения
       if ((solutions[i] >= A + i * step) && (solutions[i] < A + (i + 1) * step)) {
-        cout << solutions[i] << endl;
+        std::cout << solutions[i] << std::endl;
       }
     }
   }
