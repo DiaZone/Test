@@ -14,8 +14,8 @@ jobs:
 
     - uses: actions/checkout@v3   
 
-    - run: apt-get update
-    - run: apt-cache search
+    - run: sudo apt-get update
+    - run: sudo apt-cache search
     - run: sudo apt install openmpi-bin openmpi-dev openmpi-common openmpi-doc libopenmpi-dev
     - run: mpicxx Huita.cpp -o helloworld
     - run: mpiexec -n 10 ./helloworld
