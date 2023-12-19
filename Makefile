@@ -4,8 +4,10 @@
 
 FLAGS = $(WARNINGS) -std=c++14
 
-SRC = Huita.cpp
+SRC = FirstProject/FirstProject.cpp
 
 build:
-    g++ $(SRC) -o main -pthread -std=c++14
+	g++ $(SRC) -o main -pthread -std=c++14
 
+test:
+	g++ $(SRC) -DTESTS -o main -pthread -std=c++14
