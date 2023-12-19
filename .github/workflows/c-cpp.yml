@@ -16,8 +16,8 @@ jobs:
 
     - run: sudo apt-get update
     - run: sudo apt-cache search openmpi
-    - run: mpicxx Huita.cpp -o helloworld
-    - run: mpiexec -n 10 ./helloworld
+    - run: mpicc Huita.cpp -o helloworld
+    - run: mpirun -n 10 ./helloworld
         
     - name: make build
       run: make build
