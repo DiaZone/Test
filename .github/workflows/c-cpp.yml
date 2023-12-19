@@ -10,23 +10,12 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
     steps:
-    - name: Setup Intel MPI
-      id:   setup1
-      uses: ./
-      with:
-        mpi: intel
-        
-    - name: Setup Microsoft MPI
-      id:   setup2
-      uses: ./
-      with:
-        mpi: microsoft
-        
-    - run: test ${{ steps.setup1.outputs.mpi }} == intelmpi
-    - run: test ${{ steps.setup2.outputs.mpi }} == msmpi
-
+    
+    - uses: actions/checkout@v3
+    - uses: mpi4py/setup-mpi@v1
+    - run: mpicc Huita.cpp -o helloworld
+    - run: mpiexec -n 10 ./helloworld
         
     - uses: actions/checkout@v3
     - name: setup mpi
