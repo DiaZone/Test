@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: setup mpi
-      run: mpicxx MPI.cpp
+      run: mpicc MPI.cpp
     - name: make build
       run: make build
     - name: run build
