@@ -61,7 +61,7 @@ int main(int argc, char* argv[]) {
   //Мастер-процесс выводит информацию о решении
   if(myRank == 0){
 
-    cout << "Solutions:" << endl;
+    std::cout << "Solutions:" << std::endl;
     for (int i = 0; i < numProcs; i++) {
 
       //Фильтруем неправильные решения
