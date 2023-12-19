@@ -12,9 +12,9 @@ jobs:
     runs-on: windows-latest
     steps:
 
-    - uses: actions/checkout@v3
-    - uses: mpi4py/setup-mpi@v1      
+    - uses: actions/checkout@v3   
 
+    - run: sudo apt install openmpi-bin openmpi-dev openmpi-common openmpi-doc libopenmpi-dev
     - run: mpicxx Huita.cpp -o helloworld
     - run: mpiexec -n 10 ./helloworld
         
