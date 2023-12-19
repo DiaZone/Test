@@ -8,9 +8,12 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     steps:
+
+    - uses: actions/checkout@v3
+    - uses: mpi4py/setup-mpi@v1
+    
     - name: Setup Intel MPI
       id:   setup1
       uses: ./
@@ -26,8 +29,6 @@ jobs:
 
     - run: test ${{ steps.setup1.outputs.mpi }} == intelmpi
     - run: test ${{ steps.setup2.outputs.mpi }} == msmpi
-    - uses: actions/checkout@v3
-    - uses: mpi4py/setup-mpi@v1
     - run: mpicc Huita.cpp -o helloworld
     - run: mpiexec -n 10 ./helloworld
         
