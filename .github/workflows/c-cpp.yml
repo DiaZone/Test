@@ -12,20 +12,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-    - name: Checkout
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v3
+    - uses: mpi4py/setup-mpi@v1      
 
-    - name: Setup Microsoft MPI
-      id:   setup2
-      uses: ./
-      with:
-        mpi: microsoft
-
-    - run: test ${{ steps.setup1.outputs.mpi }} == intelmpi
-    - run: test ${{ steps.setup2.outputs.mpi }} == msmpi
-        
-
-    - run: mpicc Huita.cpp -o helloworld
+    - run: mpicc Hueta.cpp -o helloworld
     - run: mpiexec -n 10 ./helloworld
         
     - name: make build
